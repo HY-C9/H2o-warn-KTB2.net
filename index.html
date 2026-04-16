@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เงินเข้า กรุงไทย(3)</title>
+    <title>เงินเข้า กรุงไทย(3) </title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -30,6 +30,17 @@
             
             --input-bg: rgba(0, 0, 0, 0.25); 
             --shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        body.theme-pastel {
+            --bg-main: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+            --sidebar-bg: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --text-main: #004a80; 
+            --text-muted: #475569;
+            --input-bg: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
 
         body { background: var(--bg-main); color: var(--text-main); font-family: 'Kanit', sans-serif; min-height: 100vh; margin: 0; transition: all 0.5s ease; }
@@ -60,11 +71,17 @@
         .form-control, .form-select { background-color: var(--input-bg); border: 1px solid var(--card-border); color: var(--text-main); border-radius: 6px; padding: 4px 8px; font-size: 0.75rem; transition: all 0.3s; width: 100%; height: 28px;}
         .form-control:focus, .form-select:focus { background-color: var(--input-bg); border-color: var(--ktb-primary); box-shadow: 0 0 0 2px rgba(27, 165, 225, 0.3); color: var(--text-main); }
         .form-select option { background-color: #162238; color: #ffffff; }
+        body.theme-pastel .form-select option { background-color: #ffffff; color: #000000; }
         ::placeholder { color: var(--text-muted); opacity: 0.7; font-weight: 400;}
         
         .btn-bank-main { background: var(--ktb-primary); color: white; padding: 8px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; border: none; transition: all 0.3s; width: 100%; }
         .btn-bank-main:hover { background: var(--ktb-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(27, 165, 225, 0.4); color: white;}
         
+        .btn-theme-super { background: #ffffff; color: #0f172a; border: 2px solid #ffffff; box-shadow: 0 4px 15px rgba(255,255,255,0.2); transition: all 0.3s ease; font-size: 0.75rem;}
+        .btn-theme-super:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.4); background: #f8fafc;}
+        body.theme-pastel .btn-theme-super { background: #0f172a; color: #ffffff; border: 2px solid #0f172a; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        body.theme-pastel .btn-theme-super:hover { background: #1e293b; box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
         .holo-display-wrapper { position: sticky; top: 15px; display: flex; justify-content: center; align-items: flex-start; height: calc(100vh - 40px); perspective: 1000px; padding-top: 10px;}
         .holo-card { width: 100%; max-width: 480px; background: rgba(255, 255, 255, 0.02); border-radius: 20px; padding: 12px; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; }
         .holo-screen { width: 100%; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
@@ -160,8 +177,8 @@
         <button id="themeToggleBtn" class="btn btn-theme-super rounded-pill px-2 py-1 fw-bold" style="height: 28px; line-height: 1;">
           <i class="bi bi-moon-stars-fill me-1" id="themeIcon"></i> <span id="themeText">พาสเทล</span>
         </button>
-
       </div>
+    </nav>
 
     <div class="container-fluid p-0">
       <div class="row g-2">
@@ -178,7 +195,7 @@
                     <div class="col-6">
                         <label for="backgroundSelect" class="form-label">เลือกพื้นหลัง</label>
                         <select id="backgroundSelect" class="form-select" name="backgroundSelect" onchange="if(window.updateDisplay) window.updateDisplay();">
-                            <option value="assets/image/bs/backgroundEnter-KT4.1.jpg">minimal balck</option>
+                            <option value="assets/image/bs/backgroundEnter-KT4.1.jpg">minimal black</option>
                             <option value="assets/image/bs/backgroundEnter-KT4.2.jpg">เกาะ</option>
                             <option value="assets/image/bs/backgroundEnter-KT4.3.jpg">หมีเหลือง</option>
                             <option value="assets/image/bs/backgroundEnter-KT4.4.jpg">CUTE Girl</option>
@@ -209,7 +226,7 @@
                     </div>
                     <div class="col-6">
                         <label for="money01" class="form-label text-success">จำนวนเงิน</label>
-                        <input type="text" class="form-control text-success fw-bold" id="money01" name="money01" value="12,540.00" oninput="if(window.updateDisplay) window.updateDisplay();">
+                        <input type="text" class="form-control text-success fw-bold" id="money01" name="money01" value="30,365.00" oninput="if(window.updateDisplay) window.updateDisplay();">
                     </div>
                     <div class="col-6">
                         <label for="datetime" class="form-label">เวลาที่ทำรายการ</label>
@@ -263,6 +280,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/slipktb3.js?v=1"></script> 
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -282,16 +300,13 @@
     });
 
     window.updateBatteryUI = function() {
-        const val = document.getElementById('battery').value;
+        const val = document.getElementById('battery')?.value || 100;
         const levelText = document.getElementById('battery-level');
-        if(levelText) levelText.innerText = val;
-        
-        if (val < 20) {
-            levelText.className = 'text-danger fw-bold';
-        } else if (val < 50) {
-            levelText.className = 'text-warning fw-bold';
-        } else {
-            levelText.className = 'text-success fw-bold';
+        if(levelText) {
+            levelText.innerText = val;
+            if (val < 20) levelText.className = 'text-danger fw-bold';
+            else if (val < 50) levelText.className = 'text-warning fw-bold';
+            else levelText.className = 'text-success fw-bold';
         }
     };
     
@@ -310,9 +325,28 @@
         if (typeof window.togglePowerSaving === 'function') window.togglePowerSaving();
         else if (typeof window.updateDisplay === 'function') window.updateDisplay();
     };
-</script>
 
-<script src="js/slipktb3.js?v=1"></script> 
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const body = document.body;
+
+    if(themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('theme-pastel');
+            if (body.classList.contains('theme-pastel')) {
+                themeIcon.className = 'bi bi-brightness-high-fill me-1';
+                themeText.innerText = "โหมดกลางคืน";
+            } else {
+                themeIcon.className = 'bi bi-moon-stars-fill me-1';
+                themeText.innerText = "โหมดพาสเทล";
+            }
+        });
+    }
+</script>
+    
+<script src="js/slipktb3.js"></script>
+    
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -385,26 +419,6 @@
             window.location.replace('https://hy-c9.github.io/Slip-H2o-login.net/');
         });
     };
-</script>
-    <script>
-    // โค้ดสำหรับทำปุ่มสลับสี พาสเทล-มืด
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeIcon = document.getElementById('themeIcon');
-    const themeText = document.getElementById('themeText');
-    const body = document.body;
-
-    if(themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('theme-pastel');
-            if (body.classList.contains('theme-pastel')) {
-                themeIcon.className = 'bi bi-brightness-high-fill me-1';
-                themeText.innerText = "โหมดกลางคืน";
-            } else {
-                themeIcon.className = 'bi bi-moon-stars-fill me-1';
-                themeText.innerText = "โหมดพาสเทล";
-            }
-        });
-    }
 </script>
 </body>
 </html>
